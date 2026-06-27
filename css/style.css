@@ -1,0 +1,274 @@
+/* =====================================================================
+   ROAST — Coffee field guide
+   Dark espresso editorial theme · tokens, layout, nav, cards, modal
+   ===================================================================== */
+
+:root {
+  /* Palette — roasted coffee tones */
+  --espresso:  #1A1210;   /* near-black page background */
+  --bean:      #241712;   /* slightly lifted panel */
+  --crema:     #ECE1CE;   /* cream — primary text */
+  --crema-dim: #B8AC97;   /* muted cream */
+  --copper:    #C8843C;   /* the one warm accent */
+  --clay:      #B0512E;   /* secondary accent */
+  --line:      #3A2A22;   /* hairline borders on dark */
+
+  --display: "Fraunces", Georgia, serif;
+  --body:    "DM Sans", system-ui, sans-serif;
+
+  --maxw: 1100px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--espresso);
+  color: var(--crema);
+  font-family: var(--body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0 0 .5rem;
+  color: var(--crema);
+}
+
+a { color: var(--copper); }
+
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* =====================================================================
+   TOP NAV  (responsive, not the custom requirement here)
+   ===================================================================== */
+.topbar {
+  border-bottom: 1px solid var(--line);
+  background: rgba(26,18,16,.92);
+  backdrop-filter: blur(6px);
+  position: sticky; top: 0; z-index: 50;
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 66px;
+}
+.logo {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--crema);
+  text-decoration: none;
+  letter-spacing: -.01em;
+}
+.logo b { color: var(--copper); font-weight: 600; }
+
+.menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.menu a {
+  color: var(--crema-dim);
+  text-decoration: none;
+  font-size: .95rem;
+  font-weight: 500;
+  transition: color .15s ease;
+}
+.menu a:hover, .menu a[aria-current="page"] { color: var(--crema); }
+.menu a[aria-current="page"] { border-bottom: 2px solid var(--copper); padding-bottom: 2px; }
+
+.burger {
+  display: none;
+  background: none; border: 0; cursor: pointer; padding: .4rem;
+}
+.burger span { display:block; width:24px; height:2px; background:var(--crema); margin:5px 0; transition:.2s; }
+
+@media (max-width: 760px) {
+  .burger { display: block; }
+  .menu {
+    position: absolute; top: 66px; left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: var(--bean);
+    border-bottom: 1px solid var(--line);
+    max-height: 0; overflow: hidden; transition: max-height .3s ease;
+  }
+  .menu.show { max-height: 300px; }
+  .menu li { border-top: 1px solid var(--line); }
+  .menu a { display: block; padding: 1rem 1.5rem; }
+  .burger.show span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+  .burger.show span:nth-child(2){ opacity: 0; }
+  .burger.show span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+}
+
+/* =====================================================================
+   HERO
+   ===================================================================== */
+.hero { padding: 6rem 0 4rem; border-bottom: 1px solid var(--line); }
+.kicker {
+  font-size: .8rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--copper); font-weight: 600; margin-bottom: 1rem;
+}
+.hero h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); max-width: 14ch; }
+.hero h1 em { font-style: italic; color: var(--copper); }
+.hero p { max-width: 50ch; color: var(--crema-dim); font-size: 1.15rem; margin: 1.2rem 0 2rem; }
+
+.btn {
+  display: inline-block; cursor: pointer;
+  font-family: var(--body); font-weight: 600; font-size: .95rem;
+  text-decoration: none; padding: .8rem 1.6rem; border-radius: 2px;
+  background: var(--copper); color: var(--espresso); border: 0;
+  transition: transform .15s ease, background .15s ease;
+}
+.btn:hover { background: #d9954a; transform: translateY(-1px); }
+.btn-line {
+  background: transparent; color: var(--crema);
+  border: 1px solid var(--crema-dim);
+}
+.btn-line:hover { background: var(--crema); color: var(--espresso); }
+.hero-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* =====================================================================
+   SECTIONS + COFFEE CARDS
+   ===================================================================== */
+.block { padding: 4rem 0; }
+.block-head { margin-bottom: 2.5rem; max-width: 60ch; }
+.block-head h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+.block-head p { color: var(--crema-dim); }
+
+.bean-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.4rem;
+}
+.bean-card {
+  background: var(--bean);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.5rem;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  transition: transform .18s ease, border-color .18s ease;
+}
+.bean-card:hover, .bean-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--copper);
+  outline: none;
+}
+.bean-card .roast {
+  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--copper); font-weight: 600;
+}
+.bean-card h3 { font-size: 1.35rem; margin: .4rem 0 .3rem; }
+.bean-card .origin { color: var(--crema-dim); font-size: .9rem; margin-bottom: .8rem; }
+.bean-card .teaser { color: var(--crema-dim); font-size: .92rem; margin: 0; }
+.bean-card .more { color: var(--copper); font-size: .85rem; font-weight: 600; margin-top: 1rem; display: inline-block; }
+
+/* =====================================================================
+   DETAIL MODAL  (custom requirement — built by hand, see js/modal.js)
+   ===================================================================== */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(10,7,6,.72);
+  backdrop-filter: blur(3px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem; z-index: 200;
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s ease;
+}
+.modal-backdrop.open { opacity: 1; pointer-events: auto; }
+.modal {
+  background: var(--bean);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  max-width: 540px; width: 100%;
+  max-height: 88vh; overflow-y: auto;
+  padding: 2.2rem;
+  transform: translateY(12px) scale(.98);
+  transition: transform .2s ease;
+}
+.modal-backdrop.open .modal { transform: translateY(0) scale(1); }
+.modal .roast {
+  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--copper); font-weight: 600;
+}
+.modal h2 { font-size: 2rem; margin: .3rem 0; }
+.modal .origin { color: var(--crema-dim); margin-bottom: 1.4rem; }
+.modal dl { margin: 0; }
+.modal dt {
+  font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--copper); font-weight: 600; margin-top: 1.1rem;
+}
+.modal dd { margin: .2rem 0 0; color: var(--crema); }
+.modal-close {
+  float: right; background: none; border: 0; cursor: pointer;
+  color: var(--crema-dim); font-size: 1.8rem; line-height: 1;
+  margin: -.5rem -.5rem 0 0;
+}
+.modal-close:hover { color: var(--crema); }
+
+/* =====================================================================
+   LOOKUP (API nutrition search) — search box, states, result rows
+   ===================================================================== */
+.search-bar { margin-bottom: 1.5rem; }
+.search-bar input {
+  width: 100%; max-width: 400px;
+  background: var(--bean); border: 1px solid var(--line);
+  color: var(--crema); font: inherit; font-size: 1rem;
+  padding: .75rem 1rem; border-radius: 3px;
+}
+.search-bar input:focus { outline: none; border-color: var(--copper); }
+
+.state-msg { color: var(--crema-dim); padding: 1.4rem 0; font-size: 1.05rem; }
+
+.nutri-table { display: grid; gap: .6rem; }
+.nutri-row {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 1rem; align-items: center;
+  background: var(--bean); border: 1px solid var(--line);
+  border-radius: 5px; padding: .9rem 1.1rem;
+}
+.nutri-row .name { font-weight: 600; text-transform: capitalize; }
+.nutri-row .metric { color: var(--crema-dim); font-size: .9rem; }
+.nutri-row .metric b { color: var(--crema); font-weight: 600; }
+.nutri-head { color: var(--copper); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; }
+@media (max-width: 600px) {
+  .nutri-row { grid-template-columns: 1fr 1fr; }
+  .nutri-head { display: none; }
+}
+
+/* =====================================================================
+   PROSE + FOOTER
+   ===================================================================== */
+.prose { max-width: 64ch; }
+.prose p { color: var(--crema-dim); margin: 0 0 1.1rem; }
+.prose h2 { margin-top: 2rem; }
+
+.foot {
+  border-top: 1px solid var(--line);
+  padding: 2.5rem 0 1.5rem;
+  color: var(--crema-dim);
+  margin-top: 2rem;
+}
+.foot a { color: var(--copper); text-decoration: none; }
+.foot-grid { display: flex; gap: 3rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.foot h4 { color: var(--crema); font-family: var(--display); margin: 0 0 .5rem; }
+.foot small { color: #6f655a; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto; }
+}
