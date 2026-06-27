@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roast — About</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <nav class="topbar-inner wrap" aria-label="Main navigation">
+      <a class="logo" href="index.html">Roast<b>.</b></a>
+      <button class="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="lookup.html">Nutrition</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="block">
+      <div class="wrap prose">
+        <p class="kicker">About this project</p>
+        <h2>Why Roast</h2>
+        <p>Roast is a small field guide to coffee — the origins worth knowing and
+           what actually makes them taste the way they do. It pairs a curated
+           collection with a live nutrition lookup for everyday drinks.</p>
+        <h2>How it's built</h2>
+        <p>Hand-written semantic HTML5 and CSS3 with Flexbox, a little Bootstrap 5
+           for the grid, and vanilla JavaScript organised into ES6 classes
+           (<code>CoffeeApp</code>, <code>Modal</code>, <code>Collection</code>,
+           <code>NutritionAPI</code>, <code>Lookup</code>) — no jQuery. The
+           <a href="collection.html">Collection</a> opens a hand-built detail
+           modal; the <a href="lookup.html">Nutrition</a> page fetches from the
+           API Ninjas Nutrition endpoint with client-side search over the results.</p>
+        <h2>About the data</h2>
+        <p>The collection's tasting notes are written for this project. Live
+           nutrition figures come from <a href="https://api-ninjas.com/">API
+           Ninjas</a>.</p>
+        <h2>Who made it</h2>
+        <p>Built by Peter Hadchity as the final project for Full Stack
+           Development, Lebanese University — Faculty of Engineering, 2026.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div><h4>Roast.</h4><p>An independent field guide to coffee origins and styles.</p></div>
+        <div><h4>Pages</h4><p><a href="collection.html">Collection</a><br><a href="lookup.html">Nutrition</a><br><a href="about.html">About</a></p></div>
+        <div><h4>Data</h4><p>Nutrition via <a href="https://api-ninjas.com/">API Ninjas</a>.</p></div>
+      </div>
+      <small>Built by Peter Hadchity · Full Stack Final Project 2026.</small>
+    </div>
+  </footer>
+  <script src="js/app.js"></script>
+</body></html>
